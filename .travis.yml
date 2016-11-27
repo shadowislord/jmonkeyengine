@@ -36,10 +36,10 @@ cache:
     - $HOME/.gradle/wrapper/
 
 install:
-  - '[ -n "$UPLOAD_NATIVE" ] && ./gradlew -PbuildNativeProjects=true :jme3-bullet-native:assemble || ./gradlew assemble'
+  - '[ -n "$UPLOAD_NATIVE" ] && ./gradlew -PbuildNativeProjects=true assemble || ./gradlew assemble'
 
 script:
-  - echo hello
+  - ./gradlew check
 
 after_success:
   - '[ "$TRAVIS_PULL_REQUEST" == "false" ] && [ -n "$UPLOAD_NATIVE" ] && ./private/upload_native.sh || :'
